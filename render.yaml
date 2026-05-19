@@ -1,0 +1,38 @@
+# Render Blueprint — Psiefica Treinador Clínico
+# Deploy automático com 1 clique a partir deste repositório
+services:
+  - type: web
+    name: psiefica-treinador
+    runtime: node
+    plan: free                       # troque para 'starter' ($7/mês) para evitar cold start
+    region: oregon                   # ou frankfurt / singapore
+    rootDir: server
+    buildCommand: ""                 # zero dependencies — nada para instalar
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 10000
+      - key: PROVIDER
+        value: openai
+      - key: MODEL
+        value: gpt-4o-mini
+      - key: API_KEY
+        sync: false                  # você define no painel do Render (NÃO é commitada)
+      - key: ACCESS_CODES
+        sync: false                  # ex: PSF-2025-MARIA,PSF-2025-JOAO
+      - key: ALLOW_ORIGIN
+        value: "*"                   # depois troque pelo seu domínio: https://psiefica.com.br
+      - key: RATE_LIMIT
+        value: "40"
+      - key: RATE_WINDOW_S
+        value: "60"
+      - key: MAX_TOKENS
+        value: "900"
+      - key: TEMPERATURE
+        value: "0.6"
+      - key: PUBLIC_DIR
+        value: ..

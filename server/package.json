@@ -1,0 +1,14 @@
+{
+  "name": "psiefica-treinador-proxy",
+  "version": "1.0.0",
+  "description": "Backend proxy para o Treinador Clínico Psiefica. Esconde a chave de API e o system prompt do cliente.",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

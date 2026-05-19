@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Env / secrets — NUNCA committar
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Build artifacts (caso futuros)
+dist/
+build/
