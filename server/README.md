@@ -1,10 +1,10 @@
-# Psiefica · Treinador Clínico — Servidor Proxy
+# PSI Eficaz · Treinador Clínico — Servidor Proxy
 
 Backend mínimo (Node 18+, **zero dependências**) que esconde a chave de API e o system prompt do cliente, gerencia códigos de acesso por aluno e protege contra abuso com rate-limit. O mesmo processo também serve o HTML do treinador.
 
 ```
 filecusersrafaeladownloadsaria/
-├── psiefica-treinador.html       # frontend (modo proxy por padrão)
+├── PSI Eficaz-treinador.html       # frontend (modo proxy por padrão)
 └── server/
     ├── server.js                 # proxy + estáticos
     ├── package.json
@@ -61,7 +61,7 @@ Para que **só alunos pagos** consigam usar:
 ACCESS_CODES=PSF-2025-MARIA,PSF-2025-JOAO,PSF-2025-ANA
 ```
 
-- Cada aluno digita o código no modal **Config** do treinador, na aba *Servidor Psiefica*.
+- Cada aluno digita o código no modal **Config** do treinador, na aba *Servidor PSI Eficaz*.
 - O servidor valida via header `X-Access-Code`.
 - O rate-limit passa a ser **por código** (não por IP), evitando que um aluno compartilhe a URL.
 - Para revogar acesso, basta remover o código do `ACCESS_CODES` e reiniciar o servidor.
@@ -78,7 +78,7 @@ ACCESS_CODES=PSF-2025-MARIA,PSF-2025-JOAO,PSF-2025-ANA
 2. Em Render: **New → Web Service → Build Command:** vazio. **Start Command:** `node server.js`.
 3. Em **Environment** adicione `API_KEY`, `ACCESS_CODES`, `ALLOW_ORIGIN` etc.
 4. Conecte o domínio (ex: `treinador.psiefica.com.br`).
-5. Suba o arquivo `psiefica-treinador.html` para a raiz **junto com `server/`** — o `PUBLIC_DIR` padrão (`..`) já encontra o HTML.
+5. Suba o arquivo `PSI Eficaz-treinador.html` para a raiz **junto com `server/`** — o `PUBLIC_DIR` padrão (`..`) já encontra o HTML.
 
 ### Opção B — Railway / Fly.io / VPS
 

@@ -1,0 +1,12 @@
+{
+  "name": "psi-eficaz",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm ci && npm run build",
+    "start": "cd backend && npm ci && npm start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

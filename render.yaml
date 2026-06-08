@@ -1,8 +1,8 @@
-# Render Blueprint — Psiefica Treinador Clínico
+# Render Blueprint — PSI Eficaz Treinador Clínico
 # Deploy automático com 1 clique a partir deste repositório
 services:
   - type: web
-    name: psiefica-treinador
+    name: PSI Eficaz-treinador
     runtime: node
     plan: free                       # troque para 'starter' ($7/mês) para evitar cold start
     region: oregon                   # ou frankfurt / singapore
@@ -25,7 +25,7 @@ services:
       - key: ACCESS_CODES
         sync: false                  # ex: PSF-2025-MARIA,PSF-2025-JOAO
       - key: ALLOW_ORIGIN
-        value: "*"                   # depois troque pelo seu domínio: https://psiefica.com.br
+        value: "*"                   # depois troque pelo seu domínio: https://PSI Eficaz.com.br
       - key: RATE_LIMIT
         value: "40"
       - key: RATE_WINDOW_S

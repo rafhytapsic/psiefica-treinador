@@ -1,4 +1,4 @@
-# Deploy do Treinador Psiefica — passo a passo
+# Deploy do Treinador PSI Eficaz — passo a passo
 
 Escolha um caminho. Os arquivos `render.yaml`, `Dockerfile`, `.gitignore` já estão prontos no repositório.
 
@@ -59,7 +59,7 @@ Use isso para validar com os primeiros alunos enquanto não migra para o Render.
 # 1. Instalar (uma vez)
 winget install --id Cloudflare.cloudflared
 
-# 2. Subir o servidor Psiefica numa janela:
+# 2. Subir o servidor PSI Eficaz numa janela:
 cd "C:\Users\Rafaela\.verdent\verdent-projects\filecusersrafaeladownloadsaria\server"
 & "C:\Program Files\nodejs\node.exe" server.js
 
@@ -110,7 +110,7 @@ fly deploy
 - [ ] Acesse `https://SUA-URL/`. O treinador deve carregar.
 - [ ] No Config, cole um código válido. Mande "oi". Deve receber a pergunta dos 5 níveis.
 - [ ] Em produção, mude `ALLOW_ORIGIN` para o seu domínio real (não use `*`).
-- [ ] Adicione `https://SUA-URL/` ao seu site Psiefica como botão "Acessar Treinador".
+- [ ] Adicione `https://SUA-URL/` ao seu site PSI Eficaz como botão "Acessar Treinador".
 
 ---
 

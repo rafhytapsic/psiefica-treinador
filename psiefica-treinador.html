@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Psiefica · Treinador Clínico IA</title>
+<title>PSI Eficaz · Treinador Clínico IA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,7 +39,9 @@
       radial-gradient(900px 500px at 110% 10%, rgba(184,154,94,.12), transparent 60%),
       linear-gradient(180deg,#0c0911,#0e0b14 40%,#0b0810);
     -webkit-font-smoothing:antialiased;
-    overflow:hidden;
+    overflow-y:auto;
+    overflow-x:hidden;
+    min-height:100vh;
   }
   .app{
     display:grid;
@@ -130,12 +132,13 @@
   .side-foot button:hover{color:var(--text); border-color:rgba(255,255,255,.25)}
 
   /* ------- Main ------- */
-  main{display:flex;flex-direction:column;min-width:0;position:relative}
+  main{display:flex;flex-direction:column;min-width:0;position:relative;height:100vh;overflow:hidden}
   .topbar{
     display:flex;align-items:center;gap:14px;
     padding:14px 22px;
     border-bottom:1px solid var(--line);
     background:linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+    flex-shrink:0;
   }
   .topbar h1{
     font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0;letter-spacing:.2px;
@@ -159,8 +162,8 @@
   .icon-btn:hover{color:var(--text); border-color:rgba(255,255,255,.25)}
 
   /* messages */
-  .stream{flex:1;overflow:auto;padding:28px 0 140px;scroll-behavior:smooth}
-  .stream-inner{max-width:820px;margin:0 auto;padding:0 22px}
+  .stream{flex:1;overflow-y:auto;padding:28px 0 20px;scroll-behavior:smooth}
+  .stream-inner{max-width:820px;margin:0 auto;padding:0 22px 120px}
   .msg{display:flex;gap:14px;margin:18px 0;align-items:flex-start}
   .avatar{
     width:34px;height:34px;border-radius:10px;flex:0 0 34px;
@@ -267,10 +270,14 @@
 
   /* composer */
   .composer-wrap{
-    position:absolute;left:0;right:0;bottom:0;
+    position:sticky;
+    bottom:0;
+    left:0;
+    right:0;
     padding:14px 22px 18px;
     background:linear-gradient(180deg, rgba(14,11,20,0), rgba(14,11,20,.85) 30%, rgba(14,11,20,.95));
     pointer-events:none;
+    z-index:10;
   }
   .composer{
     max-width:820px;margin:0 auto;
@@ -357,8 +364,12 @@
 
   /* mobile */
   @media (max-width:880px){
-    .app{grid-template-columns:1fr}
+    .app{grid-template-columns:1fr;height:auto;min-height:100vh}
     aside{display:none}
+    main{height:auto;min-height:100vh;overflow:visible}
+    .stream{overflow-y:visible;padding:28px 0 20px}
+    .composer-wrap{position:sticky}
+    body{overflow-y:auto;overflow-x:hidden}
   }
 
   /* scrollbars */
@@ -371,7 +382,7 @@
 <div class="app">
   <aside>
     <div class="brand">
-      <div class="logo" title="Psiefica">
+      <div class="logo" title="PSI Eficaz">
         <!-- abstract psyche/leaf glyph -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 21c0-4 3-6 6-7-3-1-6-3-6-7-0 4-3 6-6 7 3 1 6 3 6 7Z" fill="currentColor" stroke="none" opacity=".9"/>
@@ -379,7 +390,7 @@
         </svg>
       </div>
       <div class="brand-text">
-        <b>Psiefica</b>
+        <b>PSI Eficaz</b>
         <span>Treinador Clínico</span>
       </div>
     </div>
@@ -417,7 +428,7 @@
       <div class="stream-inner" id="streamInner">
         <div class="welcome" id="welcome">
           <div class="hero">
-            <span class="eyebrow">Psiefica · Programa de Maestria Clínica</span>
+            <span class="eyebrow">PSI Eficaz · Programa de Maestria Clínica</span>
             <h2>Treine como um <i>terapeuta de elite</i> — sessão por sessão.</h2>
             <p class="lead">
               Um treinador de IA que simula pacientes reais, corrige sua intervenção com rigor técnico e
@@ -455,12 +466,12 @@
 <div class="modal-bg" id="settingsModal">
   <div class="modal">
     <h3>Configuração</h3>
-    <p class="s">Escolha o modo de uso. <b>Servidor Psiefica</b> é o modo recomendado para alunos: basta o seu código de acesso. <b>Modo direto</b> é apenas para quem tem chave de API própria.</p>
+    <p class="s">Escolha o modo de uso. <b>Servidor PSI Eficaz</b> é o modo recomendado para alunos: basta o seu código de acesso. <b>Modo direto</b> é apenas para quem tem chave de API própria.</p>
 
     <div class="field">
       <label>Modo</label>
       <select id="mode">
-        <option value="proxy">Servidor Psiefica (recomendado)</option>
+        <option value="proxy">Servidor PSI Eficaz (recomendado)</option>
         <option value="direct">Modo direto (chave própria)</option>
       </select>
     </div>
@@ -475,7 +486,7 @@
         <input id="accessCode" placeholder="PSF-2025-..." />
       </div>
       <div class="help">
-        Seu código de acesso é fornecido pela equipe Psiefica após a confirmação da matrícula no treinamento. Ele é vinculado à sua conta e permite o uso do treinador.
+        Seu código de acesso é fornecido pela equipe PSI Eficaz após a confirmação da matrícula no treinamento. Ele é vinculado à sua conta e permite o uso do treinador.
       </div>
     </div>
 
@@ -496,7 +507,7 @@
         <input id="apiKey" type="password" placeholder="sk-..." />
       </div>
       <div class="help">
-        Apenas para administradores/desenvolvedores. A chave fica no seu navegador (localStorage). Para alunos, use o modo Servidor Psiefica.
+        Apenas para administradores/desenvolvedores. A chave fica no seu navegador (localStorage). Para alunos, use o modo Servidor PSI Eficaz.
       </div>
     </div>
 
@@ -527,10 +538,10 @@
 
 <script>
 /* =========================================================
-   Psiefica — Treinador Clínico IA
+   PSI Eficaz — Treinador Clínico IA
    ========================================================= */
 
-const SYSTEM_PROMPT = `Você é o Treinador Clínico Psiefica, um especialista em psicoterapia baseada em prática deliberada.
+const SYSTEM_PROMPT = `Você é o Treinador Clínico PSI Eficaz, um especialista em psicoterapia baseada em prática deliberada.
 
 Seu objetivo é desenvolver habilidades terapêuticas de psicoterapeutas por meio de treino ativo, simulação de sessão e correção técnica rigorosa.
 
@@ -680,7 +691,7 @@ function renderHeader(){
   const c = activeChat();
   $levelLabel.textContent = c && c.level ? LEVEL_NAMES[c.level] : 'Nível ainda não escolhido';
   if(state.cfg.mode === 'proxy'){
-    $modelTag.textContent = 'modo: servidor Psiefica';
+    $modelTag.textContent = 'modo: servidor PSI Eficaz';
   } else {
     $modelTag.textContent = 'modelo: ' + (state.cfg.model || 'gpt-4o-mini');
   }
@@ -762,6 +773,9 @@ function buildMsgNode(m){
 function scrollBottom(){
   requestAnimationFrame(()=>{
     $stream.scrollTop = $stream.scrollHeight;
+    // Também scrolla a página se necessário (mobile)
+    const lastMsg = $streamInner.lastElementChild;
+    if(lastMsg) lastMsg.scrollIntoView({behavior:'smooth',block:'end'});
   });
 }
 
@@ -818,7 +832,7 @@ async function callLLM(messages){
         const j = await res.json();
         if(j.error === 'invalid_access_code') msg = 'Código de acesso inválido. Verifique em Config.';
         else if(j.error === 'rate_limited')   msg = 'Limite de uso atingido. Tente novamente em alguns segundos.';
-        else if(j.error === 'server_not_configured') msg = 'O servidor Psiefica não está configurado corretamente.';
+        else if(j.error === 'server_not_configured') msg = 'O servidor PSI Eficaz não está configurado corretamente.';
         else if(j.message) msg = j.message;
       }catch(e){}
       throw new Error(msg);
@@ -840,7 +854,7 @@ async function callLLM(messages){
   };
   if(cfg.provider==='openrouter'){
     headers['HTTP-Referer'] = location.origin || 'https://psiefica.local';
-    headers['X-Title'] = 'Psiefica Treinador Clinico';
+    headers['X-Title'] = 'PSI Eficaz Treinador Clinico';
   }
   const body = {
     model: cfg.model || (cfg.provider==='openrouter' ? 'openai/gpt-4o-mini' : 'gpt-4o-mini'),
