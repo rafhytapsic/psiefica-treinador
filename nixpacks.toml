@@ -1,0 +1,13 @@
+[phases.build]
+cmds = [
+  "node --version",
+  "cd backend && npm ci",
+  "cd frontend && npm ci && npm run build",
+  "mkdir -p backend/public && cp -r frontend/dist/* backend/public/ 2>/dev/null || cp -r ../frontend/dist/* backend/public/ 2>/dev/null || echo 'public ok'"
+]
+
+[phases.setup]
+nixPkgs = ["nodejs_20", "python3", "gnumake", "gcc", "libsecret"]
+
+[start]
+cmd = "cd backend && node server.js"
